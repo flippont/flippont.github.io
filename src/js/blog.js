@@ -74,7 +74,7 @@ fetch('https://flippont.github.io/src/js/blog.json')
 function init_blog() {
     const postParam = getQueryParam('post');
     if (postParam) {
-        loadBlogPost(postParam, data, false);
+        loadBlogPost(postParam, blogData, false);
     } else {
         renderBlogList(blogData);
     }
