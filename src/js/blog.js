@@ -44,17 +44,19 @@ function loadBlogPost(postUrl, data, pushState) {
             `;
             blogList.innerHTML = html;
             document.getElementById('backToList').onclick = () => {
-                // Always update URL to remove ?post=...
+                // Remove only the post query param, keep others
                 const url = new URL(window.location);
                 url.searchParams.delete('post');
                 history.pushState({type: 'list'}, '', url);
                 renderBlogList(data);
             };
-            // Update URL for direct linking
-            if (pushState) {
-                history.pushState({type: 'post', postUrl}, '', `?post=${encodeURIComponent(postUrl)}`);
-            }
             executeScripts(blogList);
+            // Update URL for direct linking, preserving other params
+            if (pushState) {
+                const url = new URL(window.location);
+                url.searchParams.set('post', postUrl);
+                history.pushState({type: 'post', postUrl}, '', url);
+            }
         })
         .catch(() => {
             blogList.innerHTML = 'Failed to load blog post.';

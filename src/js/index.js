@@ -42,7 +42,7 @@ function executeScripts(container) {
                     newScript.setAttribute(attr.name, attr.value);
                 }
             }
-            container.appendChild(newScript);
+            document.body.appendChild(newScript);
         }
         oldScript.parentNode.removeChild(oldScript);
     });
