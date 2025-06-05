@@ -54,7 +54,7 @@ function loadBlogPost(postUrl, data, pushState) {
                 url.searchParams.set('post', postUrl);
                 history.pushState({type: 'post', postUrl}, '', url);
             }
-            executeScripts(html, false, postUrl);
+            executeScripts(blogList, false, postUrl);
         })
         .catch(() => {
             blogList.innerHTML = 'Failed to load blog post.';
