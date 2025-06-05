@@ -48,6 +48,9 @@ function executeScripts(container) {
     });
 }
 
+function moveIntoView(element) {
+    document.getElementById(element).scrollIntoView();
+}
 
 function loadPage(page, push = true) {
     if (push) {

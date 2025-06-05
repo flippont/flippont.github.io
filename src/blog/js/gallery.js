@@ -749,7 +749,6 @@ onmousedown = (evt) => {
             evt.preventDefault();
         }
     }
-    // Remove doritos/illuminati click logic
 };
 
 oncontextmenu = (evt) => evt.preventDefault();
