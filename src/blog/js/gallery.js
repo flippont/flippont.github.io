@@ -606,7 +606,7 @@ function createCanvasState(canvas, imageIdx) {
 }
 
 // Setup all canvases on DOMContentLoaded
-function init() {
+function init_gallery() {
     const canvases = getAllCanvases();
     canvases.forEach((cv, idx) => {
         const imgIdx = idx % imageList.length;
@@ -753,4 +753,4 @@ onmousedown = (evt) => {
 
 oncontextmenu = (evt) => evt.preventDefault();
 
-init();
+init_gallery();
