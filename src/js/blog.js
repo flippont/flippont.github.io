@@ -79,14 +79,3 @@ fetch('https://flippont.github.io/src/js/blog.json')
     .catch(() => {
         document.getElementById('blogList').innerText = 'Failed to load blog posts.';
     });
-
-// Handle browser navigation (back/forward)
-window.onpopstate = function(event) {
-    if (!blogData) return;
-    const postParam = getQueryParam('post');
-    if (postParam) {
-        loadBlogPost(postParam, blogData, false);
-    } else {
-        renderBlogList(blogData);
-    }
-};

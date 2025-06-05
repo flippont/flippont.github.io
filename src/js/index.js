@@ -16,33 +16,37 @@ function setPageInUrl(page, push = true) {
     }
 }
 
+
 function executeScripts(container) {
-    const scripts = container.querySelectorAll('script');
+    const scripts = Array.from(container.querySelectorAll('script'));
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
-        // Check if another script with the same src exists (excluding the current one)
-        let duplicate = false;
+        let shouldInsert = true;
         if (src) {
-            // Look for any script in the document with the same src, excluding oldScript
+            // Only insert if no other script with same src exists (except oldScript)
             const allScripts = document.querySelectorAll('script[src]');
             allScripts.forEach(script => {
                 if (script !== oldScript && script.getAttribute('src') === src) {
-                    duplicate = true;
+                    shouldInsert = false;
                 }
             });
         }
-        if (!duplicate) {
+        if (shouldInsert) {
             const newScript = document.createElement('script');
-            if (src) newScript.src = src;
-            // Copy other attributes if needed
+            // Copy attributes
             for (const attr of oldScript.attributes) {
-                if (attr.name !== 'src') {
-                    newScript.setAttribute(attr.name, attr.value);
-                }
+                newScript.setAttribute(attr.name, attr.value);
             }
-            document.body.appendChild(newScript);
+            // For inline scripts, copy content
+            if (!src) {
+                newScript.textContent = oldScript.textContent;
+            }
+            // Replace old script with new one in the DOM
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+        } else {
+            // Just remove the old script if duplicate
+            oldScript.parentNode.removeChild(oldScript);
         }
-        oldScript.parentNode.removeChild(oldScript);
     });
 }
 
@@ -78,4 +82,11 @@ window.addEventListener('popstate', (event) => {
 window.addEventListener('DOMContentLoaded', () => {
     const initialPage = getPageFromUrl();
     loadPage(initialPage, false);
+    if (!blogData) return;
+    const postParam = getQueryParam('post');
+    if (postParam) {
+        loadBlogPost(postParam, blogData, false);
+    } else {
+        renderBlogList(blogData);
+    }
 });
