@@ -1,4 +1,13 @@
 let currentPage = 'home';
+let blogData = null;
+fetch('https://flippont.github.io/src/js/blog.json')
+    .then(response => response.json())
+    .then(data => {
+        blogData = data;
+    })
+    .catch(() => {
+        document.getElementById('blogList').innerText = 'Failed to load blog posts.';
+    });
 
 function getPageFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -66,6 +75,14 @@ function loadPage(page, push = true) {
         .then(data => {
             container.innerHTML = data;
             executeScripts(container);
+            if(page == 'blog') {
+                const postParam = getQueryParam('post');
+                if (postParam) {
+                    loadBlogPost(postParam, data, false);
+                } else {
+                    renderBlogList(data);
+                }
+            }
         })
         .catch(error => {
             container.innerHTML = '<div class="error">Error loading page.</div>';
@@ -78,12 +95,6 @@ function loadPage(page, push = true) {
 window.addEventListener('popstate', (event) => {
     const page = (event.state && event.state.page) || getPageFromUrl();
     loadPage(page, false);
-});
-
-// On initial load, load the correct page from query param
-window.addEventListener('DOMContentLoaded', () => {
-    const initialPage = getPageFromUrl();
-    loadPage(initialPage, false);
     if (!blogData) return;
     const postParam = getQueryParam('post');
     if (postParam) {
@@ -91,4 +102,10 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         renderBlogList(blogData);
     }
+});
+
+// On initial load, load the correct page from query param
+window.addEventListener('DOMContentLoaded', () => {
+    const initialPage = getPageFromUrl();
+    loadPage(initialPage, false);
 });

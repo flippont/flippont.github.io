@@ -62,20 +62,3 @@ function loadBlogPost(postUrl, data, pushState) {
             blogList.innerHTML = 'Failed to load blog post.';
         });
 }
-
-// Main logic
-let blogData = null;
-fetch('https://flippont.github.io/src/js/blog.json')
-    .then(response => response.json())
-    .then(data => {
-        blogData = data;
-        const postParam = getQueryParam('post');
-        if (postParam) {
-            loadBlogPost(postParam, data, false);
-        } else {
-            renderBlogList(data);
-        }
-    })
-    .catch(() => {
-        document.getElementById('blogList').innerText = 'Failed to load blog posts.';
-    });
