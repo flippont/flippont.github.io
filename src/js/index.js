@@ -14,6 +14,12 @@ function getPageFromUrl() {
     return params.get('page') || 'home';
 }
 
+// Utility to get query param
+function getQueryParam(name) {
+    const url = new URL(window.location);
+    return url.searchParams.get(name);
+}
+
 function setPageInUrl(page, push = true) {
     const url = new URL(window.location);
     url.searchParams.set('page', page);

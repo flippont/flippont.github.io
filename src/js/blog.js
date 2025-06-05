@@ -1,8 +1,3 @@
-// Utility to get query param
-function getQueryParam(name) {
-    const url = new URL(window.location);
-    return url.searchParams.get(name);
-}
 let months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
