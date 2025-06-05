@@ -45,7 +45,9 @@ function loadBlogPost(postUrl, data, pushState) {
             blogList.innerHTML = html;
             document.getElementById('backToList').onclick = () => {
                 // Always update URL to remove ?post=...
-                history.pushState({type: 'list'}, '', window.location.pathname);
+                const url = new URL(window.location);
+                url.searchParams.delete('post');
+                history.pushState({type: 'list'}, '', url);
                 renderBlogList(data);
             };
             // Update URL for direct linking

@@ -10,6 +10,7 @@ function getPageFromUrl() {
 function setPageInUrl(page, push = true) {
     const url = new URL(window.location);
     url.searchParams.set('page', page);
+    url.searchParams.delete('post');
     if (push) {
         history.pushState({ page }, '', url);
     } else {
@@ -21,7 +22,7 @@ function executeScripts(container) {
     const scripts = container.querySelectorAll('script');
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
-        if (!document.querySelector(`script[src="${src}"]`)) {
+        if ([...document.querySelectorAll(`script[src="${src}"]`)].length > 1) {
             const newScript = document.createElement('script');
             newScript.src = src;
             container.appendChild(newScript);
@@ -34,6 +35,7 @@ function loadPage(page, push = true) {
     if (push) {
         setPageInUrl(page, true);
     }
+
     // If already loaded, use cache
     if (pages[page]) {
         document.querySelector('.container').innerHTML = pages[page];
