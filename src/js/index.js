@@ -24,7 +24,6 @@ function setPageInUrl(page, push = true) {
 
 function executeScripts(container, skipScripts = false, page = '') {
     const currentUrl = window.location.href;
-    console.log('init_' + page);
     if (skipScripts && page && visitedUrls.has(currentUrl)) {
         const funcName = `init_${page}`;
         if (typeof window[funcName] === 'function') {
@@ -74,7 +73,6 @@ function executeScripts(container, skipScripts = false, page = '') {
     
     const funcName = `init_${page}`;
     if (typeof window[funcName] === 'function') {
-        console.log(funcName)
         window[funcName]();
     }
     // Mark this URL as visited after scripts are injected
