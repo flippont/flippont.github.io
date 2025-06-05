@@ -5,12 +5,6 @@ let months = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-// Utility to get query param
-function getQueryParam(name) {
-    const url = new URL(window.location);
-    return url.searchParams.get(name);
-}
-
 // Render blog list
 function renderBlogList(data) {
     const blogList = document.getElementById('blogList');
