@@ -46,8 +46,6 @@ function executeScripts(container) {
         document.body.appendChild(newScript);
         if (oldScript.parentNode) {
             oldScript.parentNode.removeChild(oldScript);
-        } else {
-            document.body.removeChild(oldScript)
         }
     });
 }
