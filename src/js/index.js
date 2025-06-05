@@ -81,14 +81,6 @@ function loadPage(page, push = true) {
         .then(data => {
             container.innerHTML = data;
             executeScripts(container);
-            if(page == 'blog') {
-                const postParam = getQueryParam('post');
-                if (postParam) {
-                    loadBlogPost(postParam, data, false);
-                } else {
-                    renderBlogList(data);
-                }
-            }
         })
         .catch(error => {
             container.innerHTML = '<div class="error">Error loading page.</div>';

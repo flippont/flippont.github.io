@@ -57,3 +57,9 @@ function loadBlogPost(postUrl, data, pushState) {
             blogList.innerHTML = 'Failed to load blog post.';
         });
 }
+const postParam = getQueryParam('post');
+if (postParam) {
+    loadBlogPost(postParam, data, false);
+} else {
+    renderBlogList(blogData);
+}
