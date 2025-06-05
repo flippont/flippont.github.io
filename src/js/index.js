@@ -58,7 +58,6 @@ function loadPage(page, push = true) {
     fetch(`https://flippont.github.io/src/pages/${page}.html`)
         .then(response => response.text())
         .then(data => {
-            pages[page] = data;
             document.querySelector('.container').innerHTML = data;
             executeScripts(document.querySelector('.container'));
         })
