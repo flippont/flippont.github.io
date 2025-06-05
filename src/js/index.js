@@ -5,11 +5,6 @@ function getPageFromUrl() {
     return params.get('page') || 'home';
 }
 
-// Utility to get query param
-function getQueryParam(name) {
-    const url = new URL(window.location);
-    return url.searchParams.get(name);
-}
 
 function setPageInUrl(page, push = true) {
     const url = new URL(window.location);
@@ -79,13 +74,13 @@ function loadPage(page, push = true) {
 window.addEventListener('popstate', (event) => {
     const page = (event.state && event.state.page) || getPageFromUrl();
     loadPage(page, false);
-    if (!blogData) return;
-    const postParam = getQueryParam('post');
-    if (postParam) {
-        loadBlogPost(postParam, blogData, false);
-    } else {
-        renderBlogList(blogData);
-    }
+    // if (!blogData) return;
+    // const postParam = getQueryParam('post');
+    // if (postParam) {
+    //     loadBlogPost(postParam, blogData, false);
+    // } else {
+    //     renderBlogList(blogData);
+    // }
 });
 
 // On initial load, load the correct page from query param
