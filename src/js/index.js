@@ -26,10 +26,8 @@ function executeScripts(container) {
     const scripts = container.querySelectorAll('script');
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
-        // Check if another script with the same src exists (excluding the current one)
         let duplicate = false;
         if (src) {
-            // Look for any script in the document with the same src, excluding oldScript
             const allScripts = document.querySelectorAll('script[src]');
             allScripts.forEach(script => {
                 if (script !== oldScript && script.getAttribute('src') === src) {
@@ -37,18 +35,23 @@ function executeScripts(container) {
                 }
             });
         }
-        if (!duplicate) {
+        if (src && !duplicate) {
             const newScript = document.createElement('script');
-            if (src) newScript.src = src;
-            // Copy other attributes if needed
+            newScript.src = src;
             for (const attr of oldScript.attributes) {
                 if (attr.name !== 'src') {
                     newScript.setAttribute(attr.name, attr.value);
                 }
             }
             document.body.appendChild(newScript);
+        } else if (!src) {
+            // Execute inline script code
+            try {
+                eval(oldScript.textContent);
+            } catch (e) {
+                console.error('Error executing inline script:', e);
+            }
         }
-        // Only remove if still attached to DOM
         if (oldScript.parentNode) {
             oldScript.parentNode.removeChild(oldScript);
         }
