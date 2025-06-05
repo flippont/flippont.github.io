@@ -22,14 +22,32 @@ function executeScripts(container) {
     const scripts = container.querySelectorAll('script');
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
-        if ([...document.querySelectorAll(`script[src="${src}"]`)].length > 1) {
+        // Check if another script with the same src exists (excluding the current one)
+        let duplicate = false;
+        if (src) {
+            // Look for any script in the document with the same src, excluding oldScript
+            const allScripts = document.querySelectorAll('script[src]');
+            allScripts.forEach(script => {
+                if (script !== oldScript && script.getAttribute('src') === src) {
+                    duplicate = true;
+                }
+            });
+        }
+        if (!duplicate) {
             const newScript = document.createElement('script');
-            newScript.src = src;
+            if (src) newScript.src = src;
+            // Copy other attributes if needed
+            for (const attr of oldScript.attributes) {
+                if (attr.name !== 'src') {
+                    newScript.setAttribute(attr.name, attr.value);
+                }
+            }
             container.appendChild(newScript);
         }
         oldScript.parentNode.removeChild(oldScript);
     });
 }
+
 
 function loadPage(page, push = true) {
     if (push) {
