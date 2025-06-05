@@ -3,7 +3,6 @@ let currentPage = 'home';
 const pages = {};
 
 function loadPage(page, push = true) {
-    if (currentPage === page) return;
     if (push) {
         history.pushState({ page }, '', `#${page}`);
     }
