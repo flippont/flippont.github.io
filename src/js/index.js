@@ -21,35 +21,30 @@ function setPageInUrl(page, push = true) {
         history.replaceState({ page }, '', url);
     }
 }
-
 function executeScripts(container) {
     const scripts = container.querySelectorAll('script');
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
         if (src) {
-            // Remove any existing script with the same src from the document
-            const allScripts = document.querySelectorAll(`script[src="${src}"]`);
-            allScripts.forEach(script => {
-                if (script.parentNode) {
-                    script.parentNode.removeChild(script);
+            // Only add script if not already present in the DOM
+            if (!document.querySelector(`script[src="${src}"]`)) {
+                const newScript = document.createElement('script');
+                newScript.src = src;
+                // Copy other attributes if needed
+                for (const attr of oldScript.attributes) {
+                    if (attr.name !== 'src') {
+                        newScript.setAttribute(attr.name, attr.value);
+                    }
                 }
-            });
-        }
-        const newScript = document.createElement('script');
-        if (src) newScript.src = src;
-        // Copy other attributes if needed
-        for (const attr of oldScript.attributes) {
-            if (attr.name !== 'src') {
-                newScript.setAttribute(attr.name, attr.value);
+                document.body.appendChild(newScript);
             }
         }
-        document.body.appendChild(newScript);
+        // Only remove if still attached to DOM
         if (oldScript.parentNode) {
             oldScript.parentNode.removeChild(oldScript);
         }
     });
 }
-
 function moveIntoView(element) {
     document.getElementById(element).scrollIntoView();
 }
