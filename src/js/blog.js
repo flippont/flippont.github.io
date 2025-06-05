@@ -48,13 +48,13 @@ function loadBlogPost(postUrl, data, pushState) {
                 history.pushState({type: 'list'}, '', url);
                 renderBlogList(data);
             };
+            executeScripts(blogList, true, postUrl);
             // Update URL for direct linking, preserving other params
             if (pushState) {
                 const url = new URL(window.location);
                 url.searchParams.set('post', postUrl);
                 history.pushState({type: 'post', postUrl}, '', url);
             }
-            executeScripts(blogList, false, postUrl);
         })
         .catch(() => {
             blogList.innerHTML = 'Failed to load blog post.';
