@@ -606,7 +606,7 @@ function createCanvasState(canvas, imageIdx) {
 }
 
 // Setup all canvases on DOMContentLoaded
-window.addEventListener("DOMContentLoaded", function() {
+function init() {
     const canvases = getAllCanvases();
     canvases.forEach((cv, idx) => {
         const imgIdx = idx % imageList.length;
@@ -641,7 +641,7 @@ window.addEventListener("DOMContentLoaded", function() {
             state.startDrawLoop();
         }
     }
-});
+};
 
 // --- Per-canvas input handlers ---
 resize = () => {
@@ -753,3 +753,5 @@ onmousedown = (evt) => {
 };
 
 oncontextmenu = (evt) => evt.preventDefault();
+
+init();
