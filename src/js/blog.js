@@ -1,3 +1,5 @@
+let blogData = null;
+
 let months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -58,7 +60,6 @@ function loadBlogPost(postUrl, data, pushState) {
         });
 }
 
-let blogData = null;
 fetch('https://flippont.github.io/src/js/blog.json')
     .then(response => response.json())
     .then(data => {

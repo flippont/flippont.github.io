@@ -1,6 +1,5 @@
 let currentPage = 'home';
 
-
 function getPageFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('page') || 'home';
