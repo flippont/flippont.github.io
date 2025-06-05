@@ -16,35 +16,34 @@ function setPageInUrl(page, push = true) {
     }
 }
 
-
 function executeScripts(container) {
-    const scripts = Array.from(container.querySelectorAll('script'));
+    const scripts = container.querySelectorAll('script');
     scripts.forEach(oldScript => {
         const src = oldScript.getAttribute('src');
-        let shouldInsert = true;
+        // Check if another script with the same src exists (excluding the current one)
+        let duplicate = false;
         if (src) {
-            // Only insert if no other script with same src exists (except oldScript)
+            // Look for any script in the document with the same src, excluding oldScript
             const allScripts = document.querySelectorAll('script[src]');
             allScripts.forEach(script => {
                 if (script !== oldScript && script.getAttribute('src') === src) {
-                    shouldInsert = false;
+                    duplicate = true;
                 }
             });
         }
-        if (shouldInsert) {
+        if (!duplicate) {
             const newScript = document.createElement('script');
-            // Copy attributes
+            if (src) newScript.src = src;
+            // Copy other attributes if needed
             for (const attr of oldScript.attributes) {
-                newScript.setAttribute(attr.name, attr.value);
+                if (attr.name !== 'src') {
+                    newScript.setAttribute(attr.name, attr.value);
+                }
             }
-            // For inline scripts, copy content
-            if (!src) {
-                newScript.textContent = oldScript.textContent;
-            }
-            // Replace old script with new one in the DOM
-            oldScript.parentNode.replaceChild(newScript, oldScript);
-        } else {
-            // Just remove the old script if duplicate
+            document.body.appendChild(newScript);
+        }
+        // Only remove if still attached to DOM
+        if (oldScript.parentNode) {
             oldScript.parentNode.removeChild(oldScript);
         }
     });
@@ -58,15 +57,18 @@ function loadPage(page, push = true) {
     if (push) {
         setPageInUrl(page, true);
     }
-    document.querySelector('.container').innerHTML = '<div class="loading">Loading...</div>';
+    // Always clear container before loading new content
+    const container = document.querySelector('.container');
+    container.innerHTML = '';
+    container.innerHTML = '<div class="loading">Loading...</div>';
     fetch(`https://flippont.github.io/src/pages/${page}.html`)
         .then(response => response.text())
         .then(data => {
-            document.querySelector('.container').innerHTML = data;
-            executeScripts(document.querySelector('.container'));
+            container.innerHTML = data;
+            executeScripts(container);
         })
         .catch(error => {
-            document.querySelector('.container').innerHTML = '<div class="error">Error loading page.</div>';
+            container.innerHTML = '<div class="error">Error loading page.</div>';
             console.error('Error loading page:', error);
         });
     currentPage = page;
