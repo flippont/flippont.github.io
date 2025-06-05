@@ -14,10 +14,11 @@ body {
 }
 
 a {
+    cursor: auto;
     text-decoration: none;
     color: #000;
     font-weight: 700;
-    width: fit-content;
+    width:min-content;
 }
 
 .t {
@@ -70,6 +71,7 @@ a {
     margin-left: 20px;
     float: right;
     line-height: 60px;
+    cursor: pointer;
 }
 .footer a:first-child {
     margin-left: 0;
