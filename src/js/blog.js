@@ -52,6 +52,7 @@ function loadBlogPost(postUrl, data, pushState) {
             if (pushState) {
                 history.pushState({type: 'post', postUrl}, '', `?post=${encodeURIComponent(postUrl)}`);
             }
+            executeScripts(blogList);
         })
         .catch(() => {
             blogList.innerHTML = 'Failed to load blog post.';

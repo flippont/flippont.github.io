@@ -72,6 +72,7 @@ a {
     float: right;
     line-height: 60px;
     cursor: pointer;
+    width: fit-content;
 }
 .footer a:first-child {
     margin-left: 0;
@@ -89,4 +90,5 @@ a {
     cursor: pointer;
     text-decoration: none;
     color: #0047AB;
+    width: fit-content;
 }

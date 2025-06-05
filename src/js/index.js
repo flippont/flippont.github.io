@@ -2,26 +2,6 @@ let currentPage = 'home';
 // Store loaded pages to avoid refetching
 const pages = {};
 
-// script execution (very hacky, I know)
-function executeScripts(container) {
-    // Find all script tags in the container
-    const scripts = container.querySelectorAll('script');
-    scripts.forEach(oldScript => {
-        const newScript = document.createElement('script');
-        // Copy attributes
-        for (const attr of oldScript.attributes) {
-            newScript.setAttribute(attr.name, attr.value);
-        }
-        // Copy inline script content
-        if (oldScript.textContent) {
-            newScript.textContent = oldScript.textContent;
-        }
-        // Remove old script and add new one
-        oldScript.parentNode.removeChild(oldScript);
-        document.body.appendChild(newScript);
-    });
-}
-
 function getPageFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('page') || 'home';
@@ -36,6 +16,40 @@ function setPageInUrl(page, push = true) {
         history.replaceState({ page }, '', url);
     }
 }
+
+function executeScripts(container) {
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(oldScript => {
+        const src = oldScript.getAttribute('src');
+        if (src) {
+            // Check if script with this src is already loaded
+            if (!document.querySelector(`script[src="${src}"]`)) {
+                const newScript = document.createElement('script');
+                newScript.src = src;
+                // Copy other attributes if needed
+                for (const attr of oldScript.attributes) {
+                    if (attr.name !== 'src') {
+                        newScript.setAttribute(attr.name, attr.value);
+                    }
+                }
+                container.appendChild(newScript);
+            }
+            oldScript.parentNode.removeChild(oldScript);
+        } else {
+            // Inline script: always execute
+            const newScript = document.createElement('script');
+            for (const attr of oldScript.attributes) {
+                newScript.setAttribute(attr.name, attr.value);
+            }
+            if (oldScript.textContent) {
+                newScript.textContent = oldScript.textContent;
+            }
+            oldScript.parentNode.removeChild(oldScript);
+            container.appendChild(newScript);
+        }
+    });
+}
+
 function loadPage(page, push = true) {
     if (push) {
         setPageInUrl(page, true);
