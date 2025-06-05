@@ -1,13 +1,5 @@
 let currentPage = 'home';
-let blogData = null;
-fetch('https://flippont.github.io/src/js/blog.json')
-    .then(response => response.json())
-    .then(data => {
-        blogData = data;
-    })
-    .catch(() => {
-        document.getElementById('blogList').innerText = 'Failed to load blog posts.';
-    });
+
 
 function getPageFromUrl() {
     const params = new URLSearchParams(window.location.search);

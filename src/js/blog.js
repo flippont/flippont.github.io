@@ -57,9 +57,19 @@ function loadBlogPost(postUrl, data, pushState) {
             blogList.innerHTML = 'Failed to load blog post.';
         });
 }
-const postParam = getQueryParam('post');
-if (postParam) {
-    loadBlogPost(postParam, data, false);
-} else {
-    renderBlogList(blogData);
-}
+
+let blogData = null;
+fetch('https://flippont.github.io/src/js/blog.json')
+    .then(response => response.json())
+    .then(data => {
+        blogData = data;
+        const postParam = getQueryParam('post');
+        if (postParam) {
+            loadBlogPost(postParam, data, false);
+        } else {
+            renderBlogList(blogData);
+        }
+    })
+    .catch(() => {
+        document.getElementById('blogList').innerText = 'Failed to load blog posts.';
+    });
