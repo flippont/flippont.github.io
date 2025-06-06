@@ -1,7 +1,6 @@
 * {
     margin: 0;
     position: relative;
-    touch-action: none;
     user-select: none;
 }
 html {
@@ -89,10 +88,38 @@ footer a:first-child {
     display: block;
     margin: 0 auto;
     cursor: pointer;
+    width: 100%;
+    max-width: 535px;
 }
 .article a {
     cursor: pointer;
     text-decoration: none;
     color: #0047AB;
     width: fit-content;
+}
+.desktop-nav { display: flex; gap: 1em; }
+.mobile-nav { display: none; }
+@media (max-width: 768px) {
+    .desktop-nav { display: none !important; }
+    .mobile-nav { display: block; position: relative; }
+    #hamburger {
+        font-size: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .mobile-menu {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 1000;
+        padding: 1em;
+        border-radius: 4px;
+    }
+    .mobile-menu a {
+        display: block;
+        margin: 4px 0;
+    }
 }
