@@ -44,10 +44,10 @@ function footer() {
     document.querySelector("footer").insertAdjacentHTML("beforeEnd", 
     ` 
         <div class="footer">
-            <a onclick="window.scrollTo(0,0)" style="float: left">Scroll To Top</a>
-            <a href="https://boxd.it/9N4xN">Letterboxd</a>
-            <a href="https://x.com/flippont">Twitter</a>
-            <a href="https://www.albumoftheyear.org/user/flippont/">Album Of The Year</a>
+            <a onclick="window.scrollTo(0,0)">Scroll To Top</a>
+            <a href="https://boxd.it/9N4xN" target="_blank">Letterboxd</a>
+            <a href="https://github.com/flippont" target="_blank">GitHub</a>
+            <a href="https://www.albumoftheyear.org/user/flippont/" target="_blank">Album Of The Year</a>
         </div>
     `);
     if(currentTab != "home" && currentPage != "" && currentPage != "blog"){    

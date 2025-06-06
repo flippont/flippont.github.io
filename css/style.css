@@ -35,8 +35,16 @@ footer, header {
 header {
     z-index: 999;
 }
+footer a {
+    margin-left: 20px;
+    float: right;
+    line-height: 60px;
+    cursor: pointer;
+    width: fit-content;
+}
 footer a:first-child {
     margin-left: 0;
+    float: left;
 }
 
 .t {
@@ -125,14 +133,12 @@ footer a:first-child {
         top: 60px;
         right: 0;
         background: white;
-        opacity: 0.5;
         z-index: 1000;
         height: auto;
         border: 1px solid #000;
         padding: 16px;
     }
     .mobile-menu a {
-        opacity: 1;
         display: block;
         margin: 8px 0;
         cursor: pointer;
