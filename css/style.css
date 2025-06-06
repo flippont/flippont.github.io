@@ -64,6 +64,20 @@ footer a:first-child {
     color: #000;
     cursor: pointer;
 }
+
+#blogSort {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    background: #fafafa;
+    transition: border 0.2s;
+    border-radius: 0;
+}
+#blogSort:focus {
+    border-color: #888;
+    outline: none;
+}
+
 .blogCard {
     border: 1px solid #000;
     margin: 10px 0;

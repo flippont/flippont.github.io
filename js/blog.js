@@ -5,11 +5,43 @@ let months = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-// Render blog list
+// Add sort dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('blogSort').addEventListener('change', () => {
+        if (blogData) {
+            renderBlogList(blogData);
+        }
+    });
+});
+
+// Render blog list with sorting
 function renderBlogList(data) {
     const blogList = document.getElementById('blogList');
     blogList.innerHTML = '';
-    data.forEach(post => {
+    // Get sort option
+    const sortSelect = document.getElementById('blogSort');
+    let sorted = [...data];
+    if (sortSelect) {
+        if (sortSelect.value === 'date') {
+            // Sort by date, newest first
+            sorted.sort((a, b) => {
+                if (!a.date) return 1;
+                if (!b.date) return -1;
+                // date: [day, monthIndex, year]
+                const da = new Date(a.date[2], a.date[1], a.date[0]);
+                const db = new Date(b.date[2], b.date[1], b.date[0]);
+                return db - da;
+            });
+        } else if (sortSelect.value === 'alpha') {
+            // Sort alphabetically by title
+            sorted.sort((a, b) => {
+                if (!a.title) return 1;
+                if (!b.title) return -1;
+                return a.title.localeCompare(b.title);
+            });
+        }
+    }
+    sorted.forEach(post => {
         const card = document.createElement('div');
         card.className = 'blogCard';
         card.style.cursor = 'pointer';

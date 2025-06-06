@@ -9,12 +9,11 @@ function header() {
     document.title = `Flippont / ${currentTab} / ${currentPage}`;
     // Hamburger menu HTML
     const navLinks = `
-        <a href="${currentTab == "home" ? "./" : "../"}profile.html" target=_self>Profile</a>
-        <a href="${currentTab == "home" ? "./" : "../"}blog/blog.html" target=_self>Blog</a>
         <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>Home</a>
+        <a href="${currentTab == "home" ? "./" : "../"}blog/blog.html" target=_self>Blog</a>
     `;
     document.querySelector("header").innerHTML = `
-        <img src="${currentTab == "home" ? "./" : "../"}images/logo.jpg" alt="" class="title">
+        <a href="${currentTab == "home" ? "./" : "../"}profile.html" target=_self><img src="${currentTab == "home" ? "./" : "../"}images/logo.jpg" alt="" class="title"></a>
         <nav class="desktop-nav">${navLinks}</nav>
         <div class="mobile-nav">
             <button id="hamburger" aria-label="Open navigation">&#9776;</button>
