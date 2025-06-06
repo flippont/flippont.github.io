@@ -33,14 +33,6 @@ footer, header {
     font-family:Arial, Helvetica, sans-serif;
 }
 
-header a, footer a {
-    margin-left: 20px;
-    float: right;
-    line-height: 60px;
-    cursor: pointer;
-    width: fit-content;
-}
-
 footer a:first-child {
     margin-left: 0;
 }
@@ -97,29 +89,39 @@ footer a:first-child {
     color: #0047AB;
     width: fit-content;
 }
-.desktop-nav { display: flex; gap: 1em; }
-.mobile-nav { display: none; }
+.desktop-nav { 
+    display: flex; 
+    gap: 1em; 
+    float: right;
+}
+.mobile-nav { 
+    display: none; 
+}
 @media (max-width: 768px) {
     .desktop-nav { display: none !important; }
-    .mobile-nav { display: block; position: relative; }
+    .mobile-nav { 
+        display: block; 
+        position: relative;
+        float: right;
+        height: 60px; 
+    }
     #hamburger {
-        font-size: 16px;
+        font-size: 32px;
         background: none;
         border: none;
         cursor: pointer;
     }
     .mobile-menu {
         position: absolute;
-        top: 20px;
-        left: 0;
+        top: 0;
+        right: 0;
         background: white;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         z-index: 1000;
-        padding: 1em;
-        border-radius: 4px;
+        height: 100vh;
+        padding: 16px;
     }
     .mobile-menu a {
         display: block;
-        margin: 4px 0;
+        margin: 8px 0;
     }
 }
