@@ -134,6 +134,9 @@ footer a:first-child {
         float: right;
         height: 60px; 
     }
+    footer a:first-child {
+        display: none;
+    }
     #hamburger {
         font-size: 32px;
         background: none;
