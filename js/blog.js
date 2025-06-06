@@ -25,7 +25,7 @@ function renderBlogList(data) {
     });
 }
 
-fetch('https://flippont.github.io/src/js/blog.json')
+fetch('../js/blog.json')
     .then(response => response.json())
     .then(data => {
         blogData = data;
