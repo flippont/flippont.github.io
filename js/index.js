@@ -6,7 +6,7 @@ if(currentTab == "flippont.github.io" && (page == "" || page == "index")){
 }
 
 function header() {
-    document.title = `Flippont / ${section} / ${page}`;
+    document.title = `Flippont / ${currentTab} / ${currentPage}`;
 
     document.querySelector("header").innerHTML = `
         <img src="${currentTab == "home" ? "./" : "../"}images/logo.jpg" alt="" class="title">
