@@ -48,7 +48,7 @@ function loadBlogPost(postUrl, data, pushState) {
                 history.pushState({type: 'list'}, '', url);
                 renderBlogList(data);
             };
-            executeScripts(blogList, true, postUrl);
+            executeScripts(blogList, postUrl);
             // Update URL for direct linking, preserving other params
             if (pushState) {
                 const url = new URL(window.location);

@@ -22,9 +22,9 @@ function setPageInUrl(page, push = true) {
     }
 }
 
-function executeScripts(container, skipScripts = false, page = '') {
+function executeScripts(container, page = '') {
     const currentUrl = window.location.href;
-    if (skipScripts && page && visitedUrls.has(currentUrl)) {
+    if (page && visitedUrls.has(currentUrl)) {
         const funcName = `init_${page}`;
         if (typeof window[funcName] === 'function') {
             window[funcName]();
@@ -99,7 +99,7 @@ function loadPage(page, push = true) {
             .then(response => response.text())
             .then(data => {
                 container.innerHTML = data;
-                executeScripts(container, true, page);
+                executeScripts(container, page);
             })
             .catch(error => {
                 container.innerHTML = '<div class="error">Error loading page.</div>';
@@ -110,7 +110,7 @@ function loadPage(page, push = true) {
             .then(response => response.text())
             .then(data => {
                 container.innerHTML = data;
-                executeScripts(container, false, page);
+                executeScripts(container, page);
             })
             .catch(error => {
                 container.innerHTML = '<div class="error">Error loading page.</div>';

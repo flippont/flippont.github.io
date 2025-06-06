@@ -752,5 +752,4 @@ onmousedown = (evt) => {
 };
 
 oncontextmenu = (evt) => evt.preventDefault();
-
-init_gallery();
+init_gallery()
