@@ -13,7 +13,7 @@ function header() {
         <a href="${currentTab == "home" ? "./" : "../"}blog/blog.html" target=_self>Blog</a>
     `;
     document.querySelector("header").innerHTML = `
-        <a href="${currentTab == "home" ? "./" : "../"}profile.html" target=_self><img src="${currentTab == "home" ? "./" : "../"}images/logo.jpg" alt="" class="title"></a>
+        <a href="${currentTab == "home" ? "./" : "../"}profile.html" target=_self><img src="${currentTab == "home" ? "./" : "../"}images/logo.png" alt="" class="title"></a>
         <nav class="desktop-nav">${navLinks}</nav>
         <div class="mobile-nav">
             <button id="hamburger" aria-label="Open navigation">&#9776;</button>
