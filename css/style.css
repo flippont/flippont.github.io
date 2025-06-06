@@ -21,6 +21,31 @@ a {
     width:min-content;
 }
 
+footer, header {
+    max-width: 700px;
+    width: calc(100% - 40px);
+    background: #fff;
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+header a, footer a {
+    margin-left: 20px;
+    float: right;
+    line-height: 60px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+footer a:first-child {
+    margin-left: 0;
+}
+
 .t {
     top: 0%;
     left: 50%;
@@ -55,28 +80,7 @@ a {
     padding: 20px;
     min-height: calc(100vh - 160px);
 }
-.footer, .header {
-    max-width: 700px;
-    width: calc(100% - 40px);
-    background: #fff;
-    height: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    font-family:Arial, Helvetica, sans-serif;
-}
-.header a, .footer a {
-    margin-left: 20px;
-    float: right;
-    line-height: 60px;
-    cursor: pointer;
-    width: fit-content;
-}
-.footer a:first-child {
-    margin-left: 0;
-}
+
 .title {
     float: left;
     height: 100%;
