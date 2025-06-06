@@ -99,6 +99,7 @@ footer a:first-child {
 .title {
     float: left;
     height: 100%;
+    cursor: pointer;
 }
 .titleImage {
     display: block;

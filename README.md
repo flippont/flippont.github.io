@@ -1,2 +1,2 @@
 # flippont.github.io
-Flippont Website
+Blog / Updates website. Link to [GitHub pages](https://flippont.github.io/).

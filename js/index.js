@@ -5,6 +5,10 @@ if(currentTab == "flippont.github.io" && (page == "" || page == "index")){
     currentTab = "home";
 }
 
+function moveIntoView(element) {
+    document.getElementById(element).scrollIntoView();
+}
+
 function header() {
     document.title = `Flippont / ${currentTab} / ${currentPage}`;
     // Hamburger menu HTML
