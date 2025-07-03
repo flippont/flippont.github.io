@@ -53,7 +53,7 @@ function createCanvasState(canvas, imageIdx) {
             this.frameW = 40;
             this.imageSprite = new Image();
             this.currentImage = imageList[imageIdx].src;
-            this.imageSprite.src = "./images/" + this.currentImage;
+            this.imageSprite.src = "./images/gallery/" + this.currentImage;
             this.photoW = 180;
             this.photoH = 240;
             this.title = imageList[imageIdx].title;
@@ -95,7 +95,7 @@ function createCanvasState(canvas, imageIdx) {
                 this.updatePhotoSize();
                 if (state && state.drawOnce) state.drawOnce();
             };
-            this.imageSprite.src = "./images/" + imgName;
+            this.imageSprite.src = "./images/gallery/" + imgName;
             const meta = imageList.find(img => img.src === imgName);
             if (meta) {
                 this.title = meta.title;
@@ -110,11 +110,11 @@ function createCanvasState(canvas, imageIdx) {
             this.cx = canvas.width / 2;
             this.cy = canvas.height / 2 - 100;
             this.pedestalImg = new Image();
-            this.pedestalImg.src = "./images/pedestal.png";
+            this.pedestalImg.src = "./images/gallery/pedestal.png";
             this.title = imageList[imageIdx].title;
             this.creationDate = imageList[imageIdx].creationDate;
             this.frameImg = new Image();
-            this.frameImg.src = "./images/frame.png";
+            this.frameImg.src = "./images/gallery/frame.png";
             this.frameImg.onload = () => {
                 if (drawOnceCallback) drawOnceCallback();
             };
@@ -181,7 +181,7 @@ function createCanvasState(canvas, imageIdx) {
             this.cx = canvas.width / 2;
             this.cy = canvas.height / 2 - 100;
             this.pedestalImg = new Image();
-            this.pedestalImg.src = "./images/pedestal.png";
+            this.pedestalImg.src = "./images/gallery/pedestal.png";
             this.title = imageList[imageIdx].title;
             this.creationDate = imageList[imageIdx].creationDate;
             this.pedestalImg.onload = () => {
@@ -243,7 +243,7 @@ function createCanvasState(canvas, imageIdx) {
             this.width = 32;
             if (!Pole.poleImg) {
                 Pole.poleImg = new Image();
-                Pole.poleImg.src = "./images/pole.png";
+                Pole.poleImg.src = "./images/gallery/pole.png";
                 Pole.poleImg.onload = () => {
                     Pole.poleImgLoaded = true;
                     if (state && state.drawOnce) state.drawOnce();
@@ -439,7 +439,7 @@ function createCanvasState(canvas, imageIdx) {
             this.radius = 50 + Math.random() * 10;
             this.imageSprite = new Image();
             this.currentImage = imageList[imageIdx].src;
-            this.imageSprite.src = "./images/" + label; // Placeholder NPC image
+            this.imageSprite.src = "./images/gallery/" + label; // Placeholder NPC image
             this.state = "walking"; // walking, watching, leaving
             this.timer = 0;
             this.speed = 2 + Math.random() * 1.5;
