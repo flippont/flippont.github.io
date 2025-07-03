@@ -50,7 +50,7 @@ function renderBlogList(data) {
         };
         card.innerHTML = `
             <h3>${post.title}</h3>
-            <p>${post.date ? post.date[0] + ((post.date[0] % 10 == 2) ? 'nd' : ((post.date[0] % 10 == 1) ? 'st': 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</p>
+            <p>${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</p>
             <p>${post.excerpt ? post.excerpt : ''}</p>
         `;
         blogList.appendChild(card);
