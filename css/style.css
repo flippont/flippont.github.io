@@ -130,31 +130,35 @@ footer a:first-child {
 @media (max-width: 768px) {
     .desktop-nav { display: none !important; }
     .mobile-nav { 
-        display: block; 
-        position: relative;
-        float: right;
-        height: 60px; 
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 1000;
     }
     footer a:first-child {
         display: none;
     }
     #hamburger {
-        font-size: 32px;
+        font-size: 20px;
         background: none;
         border: none;
         cursor: pointer;
-        margin-top: 16px;
-        margin-bottom: 16px;
+        margin-right: 10px;
+        line-height: 60px;
+        font-weight: 100;
+        color: #111;
     }
     .mobile-menu {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: white;
-        z-index: 1000;
-        height: auto;
-        border: 1px solid #000;
+        position: fixed;
+        top: 0;
         padding: 16px;
+        padding-top: 60px;
+        width: 170px;
+        right: 0;
+        background: #f5f5f5;
+        border-left: 1px solid #000;
+        height: 100vh;
     }
     .mobile-menu a {
         display: block;
