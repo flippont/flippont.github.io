@@ -46,7 +46,11 @@ function renderBlogList(data) {
         card.className = 'blogCard';
         card.style.cursor = 'pointer';
         card.onclick = (e) => {
-            window.location.href = './' + post.url + '.html'
+            if(post.url.startsWith('https://')) {
+                window.location.href = post.url;
+            } else {
+                window.location.href = './' + post.url + '.html'
+            }
         };
         card.innerHTML = `
             <h3>${post.title}</h3>

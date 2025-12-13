@@ -1,9 +1,9 @@
 [
     {
-        "title": "Forming my opinions (might add more later)",
-        "url": "takes",
-        "date": [3,7,2025],
-        "excerpt": "My takes about a few things going on in the world. Decided to preserve it because it will definitely change in the future."
+        "title": "Wordle Paint",
+        "url": "https://flippont.github.io/wordle-paint/",
+        "date": [5,12,2025],
+        "excerpt": "Wordle paint is a tool to help create pixel art patterns for wordle games."
     },
     {
         "title": "A Gallery of failed experiments",
