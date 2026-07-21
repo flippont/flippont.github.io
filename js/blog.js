@@ -53,9 +53,10 @@ function renderBlogList(data) {
             }
         };
         card.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</p>
-            <p>${post.excerpt ? post.excerpt : ''}</p>
+            <h3 class="title" style="background: linear-gradient(90deg, ${post.background[0]} 0%, ${post.background[1]} 100%)">
+                ${post.title}
+                <span>${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
+            </h3>
         `;
         blogList.appendChild(card);
     });

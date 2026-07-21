@@ -14,13 +14,13 @@ body {
 
 a {
     cursor: auto;
-    text-decoration: none;
+    text-decoration: underline;
     color: #000;
     font-weight: 700;
     width:min-content;
 }
 
-footer, header {
+header {
     max-width: 700px;
     width: calc(100% - 40px);
     background: #fff;
@@ -35,16 +35,11 @@ footer, header {
 header {
     z-index: 999;
 }
-footer a {
-    margin-left: 20px;
-    float: right;
-    line-height: 60px;
-    cursor: pointer;
-    width: fit-content;
-}
-footer a:first-child {
-    margin-left: 0;
-    float: left;
+.title {
+    background: black;
+    margin: 0 0 10px 0;
+    color: white;
+    padding: 10px;
 }
 
 .t {
@@ -67,19 +62,17 @@ footer a:first-child {
 
 #blogSort {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: none;
     font-size: 1em;
     background: #fafafa;
     transition: border 0.2s;
     border-radius: 0;
 }
 #blogSort:focus {
-    border-color: #888;
     outline: none;
 }
 
 .blogCard {
-    border: 1px solid #000;
     margin: 10px 0;
     padding: 10px;
 }
@@ -94,19 +87,6 @@ footer a:first-child {
     font-family:Arial, Helvetica, sans-serif;
     padding: 20px;
     min-height: calc(100vh - 160px);
-}
-
-.title {
-    float: left;
-    height: 100%;
-    cursor: pointer;
-}
-.titleImage {
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-    width: 100%;
-    max-width: 535px;
 }
 .article a {
     cursor: pointer;
@@ -135,9 +115,6 @@ footer a:first-child {
         right: 0;
         top: 0;
         z-index: 1000;
-    }
-    footer a:first-child {
-        display: none;
     }
     #hamburger {
         font-size: 20px;

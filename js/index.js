@@ -5,54 +5,18 @@ if(currentTab == "flippont.github.io" && (page == "" || page == "index")){
     currentTab = "home";
 }
 
-function moveIntoView(element) {
-    document.getElementById(element).scrollIntoView();
-}
-
-function header() {
-    document.title = `Flippont / ${currentTab} / ${currentPage}`;
-    // Hamburger menu HTML
-    const navLinks = `
-        <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>Home</a>
-        <a href="${currentTab == "home" ? "./" : "../"}blog/blog.html" target=_self>Blog</a>
-    `;
-    document.querySelector("header").innerHTML = `
-        <a href="${currentTab == "home" ? "./" : "../"}profile.html" target=_self><img src="${currentTab == "home" ? "./" : "../"}images/logo.png" alt="" class="title"></a>
-        <nav class="desktop-nav">${navLinks}</nav>
-        <div class="mobile-nav">
-            <button id="hamburger" aria-label="Open navigation">&#9776;</button>
-            <div id="mobileMenu" class="mobile-menu" style="display:none;">
-                ${navLinks}
-            </div>
-        </div>
-    `;
-
-    // Hamburger menu toggle logic
-    const hamburger = document.getElementById("hamburger");
-    const mobileMenu = document.getElementById("mobileMenu");
-    if (hamburger && mobileMenu) {
-        hamburger.onclick = () => {
-            mobileMenu.style.display = mobileMenu.style.display === "block" ? "none" : "block";
-        };
-        // Optional: Hide menu when clicking outside
-        document.addEventListener("click", function(e) {
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.style.display = "none";
-            }
-        });
+(function() {
+    // palette from https://palettemaker.com/rainbow-colors
+    var links = document.getElementsByTagName('a');
+    var colours = ["#e81416", "#ffa500", "#faeb36", "#79c314", "#487de7", "#4b369d", "#70369d"];
+    for (var a = 0; a < links.length; a++) {
+        var randomColour = colours[Math.floor(colours.length * Math.random())];
+        links[a].style.color = randomColour;
     }
-}
-
-function footer() {
-    document.querySelector("footer").insertAdjacentHTML("beforeEnd", 
-    ` 
-        <div class="footer">
-            <a onclick="window.scrollTo(0,0)">Scroll To Top</a>
-            <a href="https://boxd.it/9N4xN" target="_blank">Letterboxd</a>
-            <a href="https://github.com/flippont" target="_blank">GitHub</a>
-            <a href="https://www.albumoftheyear.org/user/flippont/" target="_blank">Album Of The Year</a>
-        </div>
-    `);
+    document.title = `Flippont / ${currentTab} / ${currentPage}`;
+    document.querySelector("header").innerHTML = `
+        <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>${currentTab == "home" ? "" : "<" + currentTab}</a>
+    `;
     if(currentTab != "home" && currentPage != "" && currentPage != "blog"){    
         s = document.createElement("SCRIPT");
         s.src = "https://utteranc.es/client.js";
@@ -64,7 +28,4 @@ function footer() {
         if(document.querySelector(".container"))
         document.querySelector(".container").appendChild(s);
     }
-}
-
-header()
-footer()
+})();  
