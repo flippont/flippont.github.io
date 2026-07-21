@@ -12,7 +12,8 @@ function moveIntoView(element) {
 (function() {
     document.title = `Flippont / ${currentTab} / ${currentPage}`;
     document.querySelector("header").innerHTML = `
-        <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>${currentTab == "home" ? "" : "<-" + currentTab}</a>
+        ${currentTab}<br>
+        <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>${currentTab == "home" ? "" : "<--"}</a>
     `;
     if(currentTab != "home" && currentPage != "" && currentPage != "blog"){    
         s = document.createElement("SCRIPT");

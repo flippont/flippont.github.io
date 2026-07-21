@@ -37,7 +37,7 @@ header {
 }
 .title {
     background: black;
-    margin: 20px 0 10px 0;
+    margin: 10px 0 10px 0;
     color: white;
     padding: 10px;
 }
@@ -74,7 +74,7 @@ header {
 
 .blogCard {
     margin: 10px 0;
-    padding: 10px;
+    padding: 0 10px 0 10px;
 }
 .blogCard:hover {
     background: #f0f0f0;
@@ -93,53 +93,4 @@ header {
     text-decoration: none;
     color: #0047AB;
     width: fit-content;
-}
-.desktop-nav { 
-    display: flex; 
-    gap: 20px; 
-    float: right;
-}
-.desktop-nav a {
-    line-height: 60px;
-    cursor: pointer;
-}
-.mobile-nav { 
-    display: none; 
-    height: 60px; 
-}
-@media (max-width: 768px) {
-    .desktop-nav { display: none !important; }
-    .mobile-nav { 
-        display: block;
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 1000;
-    }
-    #hamburger {
-        font-size: 20px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-right: 10px;
-        line-height: 60px;
-        font-weight: 100;
-        color: #111;
-    }
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        padding: 16px;
-        padding-top: 60px;
-        width: 170px;
-        right: 0;
-        background: #f5f5f5;
-        border-left: 1px solid #000;
-        height: 100vh;
-    }
-    .mobile-menu a {
-        display: block;
-        margin: 8px 0;
-        cursor: pointer;
-    }
 }
