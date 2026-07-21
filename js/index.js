@@ -1,7 +1,7 @@
 let currentTab = "home";
 let currentPage = "";
 location.pathname.replace(/([^\/]*?)\/([^\/]*?)(\.html)?$/, (z,a,b,c) => { if(a) currentTab = a; if(b) currentPage = b; });
-if(currentTab == "flippont.github.io" && (page == "" || page == "index")){
+if(currentTab == "flippont.github.io" && (currentPage == "" || currentPage == "index")){
     currentTab = "home";
 }
 
