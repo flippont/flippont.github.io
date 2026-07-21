@@ -49,7 +49,7 @@ function renderBlogList(data) {
             window.location.href = './' + post.url + '.html'
         };
         card.innerHTML = `
-            <h3 class="title" style="background: linear-gradient(90deg, ${post.background[0]} 0%, ${post.background[1]} 100%)">
+            <h3 class="title" style="background: ${post.background}">
                 ${post.title}
                 <span style="float: right">${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
             </h3>
