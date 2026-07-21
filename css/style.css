@@ -15,7 +15,7 @@ body {
 a {
     cursor: auto;
     text-decoration: underline;
-    color: #000;
+    color: #487de7;
     font-weight: 700;
     width:min-content;
 }
@@ -30,14 +30,14 @@ header {
     top: 0%;
     left: 50%;
     transform: translate(-50%, 0%);
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial;
 }
 header {
     z-index: 999;
 }
 .title {
     background: black;
-    margin: 0 0 10px 0;
+    margin: 20px 0 10px 0;
     color: white;
     padding: 10px;
 }

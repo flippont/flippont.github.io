@@ -46,11 +46,7 @@ function renderBlogList(data) {
         card.className = 'blogCard';
         card.style.cursor = 'pointer';
         card.onclick = (e) => {
-            if(post.url.startsWith('https://')) {
-                window.location.href = post.url;
-            } else {
-                window.location.href = './' + post.url + '.html'
-            }
+            window.location.href = './' + post.url + '.html'
         };
         card.innerHTML = `
             <h3 class="title" style="background: linear-gradient(90deg, ${post.background[0]} 0%, ${post.background[1]} 100%)">
