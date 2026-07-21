@@ -8,19 +8,28 @@ html {
 }
 
 body {
-    background: #fff;
+    background: #eee;
     font-size: 15px;
 }
-
+.container {
+    max-width: 700px;
+    width: calc(100% - 40px);
+    display: block;
+    margin: 0 auto;
+    font-family:Arial;
+    padding: 20px;
+    background: #fff;
+    min-height: calc(100vh - 40px);
+}
 a {
     cursor: pointer;
     text-decoration: none;
     font-weight: 700;
 }
 .title {
-    background: black;
+    background: #000;
     margin: 10px 0 10px 0;
-    color: white;
+    color: #fff;
     padding: 10px;
     text-decoration: none;
 }
@@ -59,15 +68,6 @@ header {
 
 .blogCard .title:hover {
     opacity: 0.7;
-}
-.container {
-    max-width: 700px;
-    width: calc(100% - 40px);
-    display: block;
-    margin: 0 auto;
-    font-family:Arial;
-    padding: 20px;
-    min-height: calc(100vh - 160px);
 }
 .article a {
     cursor: pointer;
