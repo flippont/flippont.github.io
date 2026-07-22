@@ -1,7 +1,7 @@
 let currentTab = "";
 let currentPage = "";
 location.pathname.replace(/([^\/]*?)\/([^\/]*?)(\.html)?$/, (z,a,b,c) => { if(a) currentTab = a; if(b) currentPage = b; });
-if(currentTab == "flippont.github.io" && currentPage == "" || currentPage == "index"){
+if(currentPage == "" || currentPage == "index"){
     currentTab = "home";
 }
 
@@ -10,7 +10,7 @@ function moveIntoView(element) {
 }
 
 (function() {
-    document.title = `Flippont / ${currentTab} / ${currentPage}`;
+    document.title = `${currentTab} ${(currentTab == "blog" && currentPage != "blog") ? ":" + currentPage : ""}`;
     document.querySelector("header").innerHTML = `
         ${currentTab == "home" ? "" : currentPage}<br>
         <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>${(currentTab == "home" || currentTab == "blog" && currentPage != "blog") ? "" : "<-- Home"}</a>
