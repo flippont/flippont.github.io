@@ -1,0 +1,19 @@
+name: Deploy to neocities
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: deploy-to-neocities
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Deploy to Neocities
+      uses: bcomnes/deploy-to-neocities@v3
+      with:
+        api_key: 9c5ac5f3e1c3682a0e0ed1541516fdb3
+        cleanup: true
+        dist_dir: public
