@@ -9,12 +9,28 @@ function moveIntoView(element) {
     document.getElementById(element).scrollIntoView();
 }
 
+function generateString(tab) {
+    let str = "";
+    if (currentTab != "home") {
+        if (currentTab == "blog" && currentPage != "blog") {
+            str = "../" + tab + ".html";
+        } else {
+            str = "./" + tab + ".html";
+        }
+    } else {
+        str = "./" + tab + ".html";
+    }
+    return str;
+}
+
 (function() {
     document.title = `${currentTab} ${(currentTab == "blog" && currentPage != "blog") ? ":" + currentPage : ""}`;
-    document.querySelector("header").innerHTML = `
-        ${currentTab == "home" ? "" : currentPage}<br>
-        <a href="${currentTab == "home" ? "./" : "../"}index.html" target=_self>${(currentTab == "home" || currentTab == "blog" && currentPage != "blog") ? "" : "<-- Home"}</a>
-    `;
+    document.getElementsByTagName("header")[0].innerHTML = 
+    `   <h1 class="header"><i><a href="${generateString("index")}">Flippont Website</a></i></h1>
+        <a class="menu" href="${generateString("blog")}">Blog</a>
+        <a class="menu" href="${generateString("games")}">Games</a>
+        `;
+
     if(currentTab == "blog" && currentPage != "blog"){    
         s = document.createElement("SCRIPT");
         s.src = "https://utteranc.es/client.js";
@@ -23,7 +39,9 @@ function moveIntoView(element) {
         s.setAttribute("theme","github-light");
         s.setAttribute("crossorigin","anonymous");
         s.setAttribute("async","");
-        if(document.querySelector(".container"))
-        document.querySelector(".container").appendChild(s);
+        if(document.querySelector(".contents"))
+        document.querySelector(".contents").appendChild(document.createElement("br"));
+    document.querySelector(".contents").appendChild(document.createElement("h2")).innerText = "Comments";
+        document.querySelector(".contents").appendChild(s);
     }
 })();  

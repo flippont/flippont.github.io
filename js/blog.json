@@ -1,6 +1,12 @@
 [
     {
-        "title": "???",
+        "title": "My trip up to the north",
+        "url": "north",
+        "date": [6,11,2026],
+        "background": "#008000"
+    },
+    {
+        "title": "Something from the past",
         "url": "gallery",
         "date": [5,6,2025],
         "background": "#BA5A5A"

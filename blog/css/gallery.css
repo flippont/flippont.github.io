@@ -1,0 +1,19 @@
+.article a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #0047AB;
+    width: fit-content;
+}
+
+.t {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.g {
+    width: 100%;
+    display: block;
+}

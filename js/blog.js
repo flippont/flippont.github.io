@@ -18,22 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderBlogList(data) {
     const blogList = document.getElementById('blogList');
     blogList.innerHTML = '';
-    // Get sort option
     const sortSelect = document.getElementById('blogSort');
     let sorted = [...data];
     if (sortSelect) {
-        if (sortSelect.value === 'date') {
-            // Sort by date, newest first
+        if (sortSelect.value === 'date' || sortSelect.value === 'oldest') {
             sorted.sort((a, b) => {
                 if (!a.date) return 1;
                 if (!b.date) return -1;
                 // date: [day, monthIndex, year]
                 const da = new Date(a.date[2], a.date[1], a.date[0]);
                 const db = new Date(b.date[2], b.date[1], b.date[0]);
-                return db - da;
+                return sortSelect.value === 'oldest' ? da - db : db - da;
             });
         } else if (sortSelect.value === 'alpha') {
-            // Sort alphabetically by title
             sorted.sort((a, b) => {
                 if (!a.title) return 1;
                 if (!b.title) return -1;
@@ -45,20 +42,19 @@ function renderBlogList(data) {
         const card = document.createElement('div');
         card.className = 'blogCard';
         card.style.cursor = 'pointer';
-        card.onclick = (e) => {
-            window.location.href = './' + post.url + '.html'
-        };
         card.innerHTML = `
-            <h3 class="title" style="background: ${post.background}">
-                ${post.title}
-                <span style="float: right">${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
-            </h3>
+            <a href="./blog/${post.url}.html" style="color: ${post.background}">
+                <h3 class="title">
+                    ${post.title}
+                    <span style="float: right">${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
+                </h3>
+            </a>
         `;
         blogList.appendChild(card);
     });
 }
 
-fetch('../js/blog.json')
+fetch('./js/blog.json')
     .then(response => response.json())
     .then(data => {
         blogData = data;
