@@ -24,7 +24,9 @@ function generateString(tab) {
 }
 
 (function() {
-    document.title = `${currentTab} ${(currentTab == "blog" && currentPage != "blog") ? ":" + currentPage : ""}`;
+    if ((currentTab == "blog" && currentPage != "blog")) {
+        document.title = currentTab + ":" + currentPage;
+    }
     document.getElementsByTagName("header")[0].innerHTML = 
     `   <h1 class="header"><i><a href="${generateString("index")}">Flippont Website</a></i></h1>
         <a class="menu" href="${generateString("blog")}">Blog</a>

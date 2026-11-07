@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flippont</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>blog</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 </head>
 <body>
     <div class="container">
         <header></header>
-        <select id="blogSort">
-            <option value="date">Date (Newest)</option>
-            <option value="alpha">Alphabetical (A-Z)</option>
-        </select>
-        <div class="blogList" id="blogList">
+        <div class="contents">
+            <select id="blogSort">
+                <option value="date">Date (Newest)</option>
+                <option value="oldest">Date (Oldest)</option>
+                <option value="alpha">Alphabetical (A-Z)</option>
+            </select>
+            <div class="blogList" id="blogList">
+            </div>
         </div>
     </div>
-    <footer></footer>
-    <script src="../js/blog.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="./js/blog.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>
