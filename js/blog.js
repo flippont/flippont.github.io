@@ -43,10 +43,10 @@ function renderBlogList(data) {
         card.className = 'blogCard';
         card.style.cursor = 'pointer';
         card.innerHTML = `
-            <a href="./blog/${post.url}.html" style="color: ${post.background}">
-                <h3 class="title">
+            <a href="./blog/${post.url}.html" style="color: #fff;">
+                <h3 class="title" style="background: ${post.background}">
                     ${post.title}
-                    <span style="float: right">${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
+                    <span>${post.date ? post.date[0] + ((post.date[0] % 10 == 1) ? 'st' : ((post.date[0] % 10 == 2) ? 'nd': (post.date[0] % 10 == 3) ? 'rd' : 'th')) + ' ' + months[post.date[1] - 1] + ' ' + post.date[2] : ''}</span>
                 </h3>
             </a>
         `;

@@ -27,11 +27,26 @@ function generateString(tab) {
     if ((currentTab == "blog" && currentPage != "blog")) {
         document.title = currentTab + ":" + currentPage;
     }
+    let firstColour = ["a", "0", Math.random() < 0.5 ? "a" : "0"]
+        .sort(() => Math.random() - 0.5)
+        .join("");
+    let secondColour = firstColour.replaceAll("a", "b");
+    document.querySelector(':root').style.setProperty('--first-colour', "#" + firstColour);
+    document.querySelector(':root').style.setProperty('--second-colour', "#" + secondColour);
+    
     document.getElementsByTagName("header")[0].innerHTML = 
-    `   <h1 class="header"><i><a href="${generateString("index")}">Flippont Website</a></i></h1>
-        <a class="menu" href="${generateString("blog")}">Blog</a>
-        <a class="menu" href="${generateString("games")}">Games</a>
-        `;
+    `   <h1 class="header"><i><a href="${generateString("index")}">Flippont</a></i></h1>
+        <div class="nav">
+            <a class="menu" href="${generateString("blog")}" style="background: #a00;">Blog</a>
+            <a class="menu" href="${generateString("games")}" style="background: #0aa;">Games</a>
+        </div>
+    `;
+
+    document.getElementsByTagName("footer")[0].innerHTML =
+    `   <div class="footer">
+            <p>© Flippont 2026</p>
+        </div>
+    `;
 
     if(currentTab == "blog" && currentPage != "blog"){    
         s = document.createElement("SCRIPT");
